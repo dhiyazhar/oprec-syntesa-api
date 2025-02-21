@@ -1,0 +1,317 @@
+2025-02-21 14:05:38,025 - routes.submission - INFO - Initializing Google Services
+2025-02-21 14:05:38,070 - uvicorn.error - INFO - Started server process [28894]
+2025-02-21 14:05:38,070 - uvicorn.error - INFO - Waiting for application startup.
+2025-02-21 14:05:38,071 - uvicorn.error - INFO - Application startup complete.
+2025-02-21 14:05:38,073 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-02-21 14:05:52,869 - uvicorn.error - ERROR - Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 178, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/applications.py", line 112, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 177, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(value)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/main.py", line 27, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 154, in call_next
+    |     raise app_exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 20, in __call__
+    |     await responder(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 39, in __call__
+    |     await self.app(scope, receive, self.send_with_gzip)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/routing.py", line 338, in app
+    |     response = actual_response_class(content, **response_args)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 181, in __init__
+    |     super().__init__(content, status_code, headers, media_type, background)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 44, in __init__
+    |     self.body = self.render(content)
+    |                 ^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/responses.py", line 45, in render
+    |     assert orjson is not None, "orjson must be installed to use ORJSONResponse"
+    |            ^^^^^^^^^^^^^^^^^^
+    | AssertionError: orjson must be installed to use ORJSONResponse
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 177, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/main.py", line 27, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 154, in call_next
+    raise app_exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 20, in __call__
+    await responder(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 39, in __call__
+    await self.app(scope, receive, self.send_with_gzip)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/routing.py", line 338, in app
+    response = actual_response_class(content, **response_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 181, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 44, in __init__
+    self.body = self.render(content)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/responses.py", line 45, in render
+    assert orjson is not None, "orjson must be installed to use ORJSONResponse"
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: orjson must be installed to use ORJSONResponse
+2025-02-21 14:05:55,957 - uvicorn.error - ERROR - Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 178, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/applications.py", line 112, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 177, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(value)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/main.py", line 27, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 154, in call_next
+    |     raise app_exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 20, in __call__
+    |     await responder(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 39, in __call__
+    |     await self.app(scope, receive, self.send_with_gzip)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/routing.py", line 338, in app
+    |     response = actual_response_class(content, **response_args)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 181, in __init__
+    |     super().__init__(content, status_code, headers, media_type, background)
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 44, in __init__
+    |     self.body = self.render(content)
+    |                 ^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/responses.py", line 45, in render
+    |     assert orjson is not None, "orjson must be installed to use ORJSONResponse"
+    |            ^^^^^^^^^^^^^^^^^^
+    | AssertionError: orjson must be installed to use ORJSONResponse
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 177, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/main.py", line 27, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 154, in call_next
+    raise app_exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 20, in __call__
+    await responder(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/gzip.py", line 39, in __call__
+    await self.app(scope, receive, self.send_with_gzip)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/routing.py", line 338, in app
+    response = actual_response_class(content, **response_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 181, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/starlette/responses.py", line 44, in __init__
+    self.body = self.render(content)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/azhar/Code/oprec-syntesa-api/venv/lib/python3.12/site-packages/fastapi/responses.py", line 45, in render
+    assert orjson is not None, "orjson must be installed to use ORJSONResponse"
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: orjson must be installed to use ORJSONResponse
+2025-02-21 14:07:14,587 - uvicorn.error - INFO - Shutting down
+2025-02-21 14:07:14,690 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-02-21 14:07:14,692 - uvicorn.error - INFO - Application shutdown complete.
+2025-02-21 14:07:14,693 - uvicorn.error - INFO - Finished server process [28894]
