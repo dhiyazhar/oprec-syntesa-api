@@ -6,6 +6,7 @@ from typing import Tuple, List
 from datetime import datetime
 from functools import lru_cache
 from time import time
+from dotenv import load_dotenv
 
 from fastapi import APIRouter, File, Header, UploadFile, Form, Depends, HTTPException, status, Request
 from fastapi.concurrency import run_in_threadpool
@@ -15,10 +16,6 @@ from google.oauth2.service_account import Credentials
 
 from services.gsheets import GSheets
 from services.gdrive import GDrive
-
-'''
-    Logging
-'''
 
 logging.basicConfig(
     level=logging.INFO,
@@ -30,9 +27,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+load_dotenv()
+
 ALLOWED_FILE_TYPES = {'application/pdf'}
 MAX_FILE_SIZE = 5 * 1024 * 1024
-CREDENTIALS_PATH = './env/google-key.json'
+CREDENTIALS_PATH = 'env/google-key.json'
 
 class UploadProgressTracker:
     def __init__(self, total_size: int, filename: str):
@@ -99,7 +98,7 @@ class FileValidator:
 class RegistrationData(BaseModel):
     nama: constr(min_length=2)
     email: EmailStr
-    nim: constr(pattern=r'^\d{11}$')
+    nim: constr(pattern=r'^\d{11}$')    
     prodi: constr(min_length=2)
     kelas: str
 
@@ -146,7 +145,8 @@ class GoogleServices:
 services = GoogleServices()
 
 def verify_api_key(x_api_key: str = Header(...)):
-    if not x_api_key or x_api_key != os.getenv("API_KEY"):
+    api_key = os.getenv("API_KEY")
+    if not api_key:
         logger.warning("Invalid API key attempt")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -166,7 +166,7 @@ async def upload_files(
     upload_start_time = time()
     
     upload_tasks = [
-        run_in_threadpool(gdrive.upload_file, content, filename)
+        gdrive.upload_file(content, filename)
         for content, filename in files_data
     ]
     
@@ -209,7 +209,7 @@ async def register(
             prodi=prodi,
             kelas=kelas
         )
-        logger.info(f'Registration data validated for {reg_data.NIM}')
+        logger.info(f'Registration data validated for {reg_data.nim}')
         
         logger.info(f'Starting file validation')
         cv_content, transcript_content = await asyncio.gather(
@@ -230,13 +230,13 @@ async def register(
         logger.info('Updating registration data in Google Sheets')
         data = [[reg_data.nama, reg_data.email, reg_data.nim, reg_data.prodi, reg_data.kelas, cv_link, transcript_link]]
         
-        if not await run_in_threadpool(services.sheets.append_data, data): 
+        if not await services.sheets.append_data(data):
             logger.error('Failed to upload Google Sheets.')
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail='Failed to update registration form.'
             )
-        
+
         registration_duration = time() - registration_start_time
         logger.info(
             f'Registration completed for NIM: {reg_data.nama} '
