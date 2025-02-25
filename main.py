@@ -34,6 +34,6 @@ app.include_router(submission.router, prefix="/api")
 async def root():
     return {"message": "Syntesa © 2025"}
 
-@app.get("/health", response_class=ORJSONResponse)
+@app.get("/health")
 async def health():
-    return ORJSONResponse({"status": "ok"})
+    return {"status": "ok"}
